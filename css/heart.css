@@ -3,6 +3,7 @@ body {
 	padding: 0;
 	height: 100vh;
 	background-image: linear-gradient(30deg, #faaca8, #ddd6f3);
+	cursor: url('https://img.icons8.com/emoji/32/magic-wand.png'), auto;
 }
 
 canvas#canvas {
