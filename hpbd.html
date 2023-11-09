@@ -9,7 +9,7 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <!-- Popper JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <!-- Latest compiled JavaScript -->
@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="https://cdn.leanhduc.pro.vn/utilities/animation/shake-effect/style.css"/>
     <script type="module" src="js/heart-cursor.js"></script>
     <link rel="stylesheet" href="./css/form.css">
-    <script src="./js/form.js"></script>
+    <script src="js/form.js"></script>
 </head>
 <body> 
     <canvas id="canvas"></canvas>
@@ -51,9 +51,9 @@
             <form class="slider-form slider-one">
               <h1>Happy Birthday Giang&nbsp;<img width="32" height="32" src="https://img.icons8.com/stickers/100/birthday-cake.png" alt="birthday-cake"/></h1>
               <label class="input">
-                <input type="text" class="name" placeholder="Hãy diễn tả hôm nay bằng 2-3 từ">
+                <input type="text" class="name" id="name" name="test" placeholder="Hãy diễn tả hôm nay bằng 2-3 từ">
               </label>
-              <button class="first">Bước tiếp nè</button>
+              <button class="first next">Bước tiếp nè</button>
             </form>
             <form class="slider-form slider-two">
               <h1>Hôm nay chị có vui hông?</h1>
@@ -71,12 +71,12 @@
                   </div>
                 </label>
               </div>
-              <button class="second next">Next Step</button>
+              <button class="second next">Sắp xong rùi</button>
             </form>
             <div class="slider-form slider-three">
                 <h3>Cảm ơn vì đã điền! <3
                 </h3>
-              <a class="reset" href="/heart.html" target="_blank">Xem cái cúi nè :></a>
+              <a class="reset" style="text-decoration: none;" href="/heart.html" target="_blank">Xem cái cúi nè :></a>
             </div>
           </div>
         </div>

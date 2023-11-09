@@ -9,14 +9,14 @@ var $firstButton = $(".first"),
 
 $firstButton.on("click", function(e){
   $(this).text("Saving...").delay(900).queue(function(){
-    $ctr.addClass("center slider-two-active").removeClass("slider-one-active");
+    $ctr.removeClass("slider-one-active").addClass("center slider-two-active");
   });
   e.preventDefault();
 });
 
 $secondButton.on("click", function(e){
   $(this).text("Saving...").delay(900).queue(function(){
-    $ctr.addClass("full slider-three-active").removeClass("center slider-two-active slider-one-active");
+    $ctr.addClass("full slider-three-active").removeClass("center slider-two-active");
     $name = $name.val();
     if($name == "") {
       $yourname.html("Anonymous!");
