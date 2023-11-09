@@ -15,10 +15,71 @@
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.leanhduc.pro.vn/utilities/animation/shake-effect/style.css"/>
     <script type="module" src="js/heart-cursor.js"></script>
+    <link rel="stylesheet" href="./css/form.css">
+    <script src="./js/form.js"></script>
 </head>
 <body> 
     <canvas id="canvas"></canvas>
+    <div class="container slider-one-active">
+        <div class="steps">
+          <div class="step step-one">
+            <div class="liner"></div>
+            <span>Chao xìn</span>
+          </div>
+          <div class="step step-two">
+            <div class="liner"></div>
+            <span>Đánh giá</span>
+          </div>
+          <div class="step step-three">
+            <div class="liner"></div>
+            <span>Hết cứu</span>
+          </div>
+        </div>
+        <div class="line">
+          <div class="dot-move"></div>
+          <div class="dot zero"></div>
+          <div class="dot center"></div>
+          <div class="dot full"></div>
+        </div>
+        <div class="slider-ctr">
+          <div class="slider">
+            <form class="slider-form slider-one">
+              <h1>Happy Birthday Giang&nbsp;<img width="32" height="32" src="https://img.icons8.com/stickers/100/birthday-cake.png" alt="birthday-cake"/></h1>
+              <label class="input">
+                <input type="text" class="name" placeholder="Hãy diễn tả hôm nay bằng 2-3 từ">
+              </label>
+              <button class="first">Bước tiếp nè</button>
+            </form>
+            <form class="slider-form slider-two">
+              <h1>Hôm nay chị có vui hông?</h1>
+              <div class="label-ctr">
+                <label class="radio">
+                  <input type="radio" value="sad" name="condition">
+                  <div class="emot happy">
+                    <div class="mouth sad"></div>
+                  </div>
+                </label>
+                <label class="radio">
+                  <input type="radio" value="happy" name="condition">
+                  <div class="emot happy">
+                    <div class="mouth smile"></div>
+                  </div>
+                </label>
+              </div>
+              <button class="second next">Next Step</button>
+            </form>
+            <div class="slider-form slider-three">
+                <h3>Cảm ơn vì đã điền! <3
+                </h3>
+              <a class="reset" href="/heart.html" target="_blank">Xem cái cúi nè :></a>
+            </div>
+          </div>
+        </div>
+      </div>
 </body>
 </html>
