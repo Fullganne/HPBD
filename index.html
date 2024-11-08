@@ -3,50 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gửi Thông Tin Qua Email</title>
+    <title>Chúc Mừng Sinh Nhật!</title>
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script type="text/javascript">
         (function(){
-            emailjs.init({publicKey: 'l0MCGnXKP3QCCmXwI'}); // Thay YOUR_USER_ID bằng User ID của bạn từ EmailJS
+            emailjs.init({
+                publicKey: 'l0MCGnXKP3QCCmXwI'
+            }); // Thay YOUR_USER_ID bằng User ID từ EmailJS
         })();
     </script>
+    <style>
+        /* Ảnh nền với chòm sao Scorpion */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('https://cdn.mos.cms.futurecdn.net/jnpeQRvSGXZdUwYVEk7DXE-650-80.jpg.webp') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            overflow: hidden;
+            cursor: url('https://www.cursor.cc/cursor3d/97327.png'), auto;
+        }
+        
+        /* Hiệu ứng lấp lánh cho các ngôi sao */
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: sparkle 2s infinite ease-in-out;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        /* Container trung tâm */
+        .container {
+            text-align: center;
+            padding: 5%;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            margin-top: 5%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        h1 {
+            font-size: 3em;
+            font-weight: bold;
+            color: #FFD700;
+            text-shadow: 0 0 10px #FFD700;
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            color: #FFD700;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        button {
+            background-color: #FFD700;
+            color: #000;
+            font-weight: bold;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #FFC107;
+        }
+    </style>
 </head>
 <body>
+    <!-- Container cho lời chúc mừng và form -->
     <div class="container">
-        <h2>Nhập Thông Tin</h2>
+        <h1>🎂🎂🎂Chúc Mừng Sinh Nhật Giang🎂🎂🎂</h1>
+        <p>Hôm nay là ngày đặc biệt...ngày mà một cô gái dễ thương và xinh đẹp được sinh ra đời. Chúc chị sẽ có một ngày thật vui và hạnh phúc bên những người bạn, những người đồng nghiệp. Cứ đón nhận mọi chuyện xảy ra theo hướng tích cực nhất và chuyện tốt đẹp sẽ đến với chị thôi 😇</p>
         <form id="contactForm">
-            <label for="name">Tên:</label>
-            <input type="text" id="name" name="name" required><br><br>
-            
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required><br><br>
-            
-            <label for="message">Tin nhắn:</label>
-            <textarea id="message" name="message" required></textarea><br><br>
-            
+            <label for="message">Hãy mô tả niềm vui lúc này:</label>
+            <textarea id="message" name="message" required></textarea>
             <button type="button" onclick="sendEmail()">Gửi</button>
         </form>
     </div>
 
+    <!-- JavaScript cho chức năng gửi email -->
     <script>
         function sendEmail() {
-            const serviceID = "service_16h9v8n";   // Thay YOUR_SERVICE_ID bằng Service ID của bạn
-            const templateID = "template_1n887rj"; // Thay YOUR_TEMPLATE_ID bằng Template ID của bạn
+            const serviceID = "service_16h9v8n";   // Thay YOUR_SERVICE_ID bằng Service ID từ EmailJS
+            const templateID = "template_tx5pi3n"; // Thay YOUR_TEMPLATE_ID bằng Template ID từ EmailJS
 
             const params = {
                 to_email: 'annd.cnthongtin@gmail.com', // Email đích
-                from_name: document.getElementById("name").value,
-                from_email: document.getElementById("email").value,
+                from_name: 'Giang',
+                from_email: 'firewolf148@gmail.com',
                 message: document.getElementById("message").value
             };
 
             emailjs.send(serviceID, templateID, params)
             .then((response) => {
-                alert("Email đã được gửi thành công!", response.status, response.text);
+                alert("Cảm ơn vì chị đã đến!", response.status, response.text);
             })
             .catch((error) => {
-                alert("Gửi email thất bại...", error);
+                alert("Cảm ơn vì chị đã đến!", error);
             });
+        }
+    </script>
+
+    <!-- Tạo các ngôi sao lấp lánh ngẫu nhiên -->
+    <script>
+        // Số lượng ngôi sao
+        const numStars = 100;
+
+        for (let i = 0; i < numStars; i++) {
+            const star = document.createElement("div");
+            star.className = "star";
+            star.style.top = `${Math.random() * 100}vh`;
+            star.style.left = `${Math.random() * 100}vw`;
+            document.body.appendChild(star);
         }
     </script>
 </body>
