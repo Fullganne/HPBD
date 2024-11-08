@@ -7,9 +7,7 @@
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script type="text/javascript">
         (function(){
-            emailjs.init({
-                publicKey: 'l0MCGnXKP3QCCmXwI'
-            }); // Thay YOUR_USER_ID bằng User ID từ EmailJS
+            emailjs.init("l0MCGnXKP3QCCmXwI");
         })();
     </script>
     <style>
@@ -23,7 +21,7 @@
             overflow: hidden;
             cursor: url('https://www.cursor.cc/cursor3d/97327.png'), auto;
         }
-        
+
         /* Hiệu ứng lấp lánh cho các ngôi sao */
         .star {
             position: absolute;
@@ -58,7 +56,7 @@
             text-shadow: 0 0 10px #FFD700;
         }
 
-        #birthdayMessage {
+        p, #thankYouMessage {
             font-size: 1.2em;
             margin-bottom: 20px;
             white-space: pre-wrap;
@@ -99,12 +97,17 @@
     <!-- Container cho lời chúc mừng và form -->
     <div class="container">
         <h1>🎂🎂🎂 Chúc Mừng Sinh Nhật Giang 🎂🎂🎂</h1>
-        <p id="birthdayMessage"></p>
+        <p id="birthdayMessage">Hôm nay là ngày đặc biệt...ngày mà một cô gái dễ thương và xinh đẹp được sinh ra đời. Chúc chị sẽ có một ngày thật vui và hạnh phúc bên những người bạn, những người đồng nghiệp. Cứ đón nhận mọi chuyện xảy ra theo hướng tích cực nhất và chuyện tốt đẹp sẽ đến với chị thôi 😇</p>
+        
+        <!-- Form gửi email -->
         <form id="contactForm">
             <label for="message">Hãy mô tả niềm vui lúc này:</label>
             <textarea id="message" name="message" required></textarea>
             <button type="button" onclick="sendEmail()">Gửi</button>
         </form>
+
+        <!-- Phần hiển thị lời cảm ơn sau khi gửi thành công -->
+        <p id="thankYouMessage" style="display: none;">Cảm ơn vì chị đã đến! 🎉 Chúc chị một sinh nhật vui vẻ, tràn đầy niềm vui và hạnh phúc! 🌟</p>
     </div>
 
     <!-- JavaScript cho chức năng gửi email -->
@@ -122,32 +125,20 @@
 
             emailjs.send(serviceID, templateID, params)
             .then((response) => {
-                alert("Cảm ơn vì chị đã đến!", response.status, response.text);
+                // Ẩn form và hiển thị lời cảm ơn
+                document.getElementById("contactForm").style.display = "none";
+                document.getElementById("thankYouMessage").style.display = "block";
             })
             .catch((error) => {
-                alert("Cảm ơn vì chị đã đến!", error);
+                alert("Có lỗi xảy ra khi gửi thư. Vui lòng thử lại sau!");
             });
         }
     </script>
 
-    <!-- Hiệu ứng chạy chữ cho lời chúc -->
+    <!-- Tạo các ngôi sao lấp lánh ngẫu nhiên -->
     <script>
-        const messageText = "Hôm nay là ngày đặc biệt... ngày mà một cô gái dễ thương và xinh đẹp được sinh ra đời. Chúc chị sẽ có một ngày thật vui và hạnh phúc bên những người bạn, những người đồng nghiệp. Cứ đón nhận mọi chuyện xảy ra theo hướng tích cực nhất và chuyện tốt đẹp sẽ đến với chị thôi 😇";
-        const messageElement = document.getElementById("birthdayMessage");
-        let messageIndex = 0;
-
-        function typeMessage() {
-            if (messageIndex < messageText.length) {
-                messageElement.innerHTML += messageText.charAt(messageIndex);
-                messageIndex++;
-                setTimeout(typeMessage, 50); // Điều chỉnh tốc độ hiển thị từng chữ (50ms)
-            }
-        }
-
-        window.onload = typeMessage;
-
-        // Tạo các ngôi sao lấp lánh ngẫu nhiên
         const numStars = 100;
+
         for (let i = 0; i < numStars; i++) {
             const star = document.createElement("div");
             star.className = "star";
