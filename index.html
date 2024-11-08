@@ -7,7 +7,7 @@
     <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script type="text/javascript">
         (function(){
-            emailjs.init("YOUR_USER_ID"); // Thay YOUR_USER_ID bằng User ID của bạn từ EmailJS
+            emailjs.init({publicKey: 'l0MCGnXKP3QCCmXwI'}); // Thay YOUR_USER_ID bằng User ID của bạn từ EmailJS
         })();
     </script>
 </head>
@@ -30,8 +30,8 @@
 
     <script>
         function sendEmail() {
-            const serviceID = "YOUR_SERVICE_ID";   // Thay YOUR_SERVICE_ID bằng Service ID của bạn
-            const templateID = "YOUR_TEMPLATE_ID"; // Thay YOUR_TEMPLATE_ID bằng Template ID của bạn
+            const serviceID = "service_16h9v8n";   // Thay YOUR_SERVICE_ID bằng Service ID của bạn
+            const templateID = "template_1n887rj"; // Thay YOUR_TEMPLATE_ID bằng Template ID của bạn
 
             const params = {
                 to_email: 'annd.cnthongtin@gmail.com', // Email đích
