@@ -11,7 +11,6 @@
         })();
     </script>
     <style>
-        /* Ảnh nền với chòm sao Scorpion */
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -22,7 +21,6 @@
             cursor: url('https://www.cursor.cc/cursor3d/97327.png'), auto;
         }
 
-        /* Hiệu ứng lấp lánh cho các ngôi sao */
         .star {
             position: absolute;
             width: 2px;
@@ -37,7 +35,6 @@
             50% { opacity: 1; }
         }
 
-        /* Container trung tâm */
         .container {
             text-align: center;
             padding: 5%;
@@ -50,15 +47,14 @@
         }
 
         h1 {
-            font-size: 2em;
+            font-size: 3em;
             font-weight: bold;
             color: #FFD700;
             text-shadow: 0 0 10px #FFD700;
         }
 
-        p, #thankYouMessage {
+        #birthdayMessage, #thankYouMessage {
             font-size: 1.2em;
-            margin-bottom: 20px;
             white-space: pre-wrap;
         }
 
@@ -91,13 +87,16 @@
         button:hover {
             background-color: #FFC107;
         }
+
+        #contactForm {
+            display: none;
+        }
     </style>
 </head>
 <body>
-    <!-- Container cho lời chúc mừng và form -->
     <div class="container">
-        <h1>🎂🎂 Chúc Mừng Sinh Nhật Giang 🎂🎂</h1>
-        <p id="birthdayMessage">Hôm nay là ngày đặc biệt...ngày mà một cô gái dễ thương và xinh đẹp được sinh ra đời. Chúc chị sẽ có một ngày thật vui và hạnh phúc bên những người bạn, những người đồng nghiệp. Cứ đón nhận mọi chuyện xảy ra theo hướng tích cực nhất và chuyện tốt đẹp sẽ đến với chị thôi 😇</p>
+        <h1>🎂🎂🎂 Chúc Mừng Sinh Nhật Giang 🎂🎂🎂</h1>
+        <p id="birthdayMessage"></p>
         
         <!-- Form gửi email -->
         <form id="contactForm">
@@ -106,18 +105,40 @@
             <button type="button" onclick="sendEmail()">Gửi</button>
         </form>
 
-        <!-- Phần hiển thị lời cảm ơn sau khi gửi thành công -->
         <p id="thankYouMessage" style="display: none;">Cảm ơn vì chị đã đến! 🎉 Chúc chị một sinh nhật vui vẻ, tràn đầy niềm vui và hạnh phúc! 🌟</p>
     </div>
 
-    <!-- JavaScript cho chức năng gửi email -->
     <script>
+        function typeWriter(text, elementId, callback) {
+            let i = 0;
+            function type() {
+                if (i < text.length) {
+                    document.getElementById(elementId).innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, 50); // Thời gian giữa các ký tự
+                } else {
+                    callback(); // Gọi hàm callback sau khi hoàn thành
+                }
+            }
+            type();
+        }
+
+        function showForm() {
+            document.getElementById("contactForm").style.display = "block";
+        }
+
+        // Hiệu ứng chạy từng chữ cho lời chúc
+        document.addEventListener("DOMContentLoaded", function() {
+            const birthdayMessage = "Hôm nay là ngày đặc biệt...ngày mà một cô gái dễ thương và xinh đẹp được sinh ra đời. Chúc chị sẽ có một ngày thật vui và hạnh phúc bên những người bạn, những người đồng nghiệp. Cứ đón nhận mọi chuyện xảy ra theo hướng tích cực nhất và chuyện tốt đẹp sẽ đến với chị thôi 😇";
+            typeWriter(birthdayMessage, "birthdayMessage", showForm); // Hiển thị form sau khi chạy xong lời chúc
+        });
+
         function sendEmail() {
-            const serviceID = "service_16h9v8n";   // Thay YOUR_SERVICE_ID bằng Service ID từ EmailJS
-            const templateID = "template_tx5pi3n"; // Thay YOUR_TEMPLATE_ID bằng Template ID từ EmailJS
+            const serviceID = "service_16h9v8n";
+            const templateID = "template_tx5pi3n";
 
             const params = {
-                to_email: 'annd.cnthongtin@gmail.com', // Email đích
+                to_email: 'annd.cnthongtin@gmail.com',
                 from_name: 'Giang',
                 from_email: 'firewolf148@gmail.com',
                 message: document.getElementById("message").value
@@ -125,7 +146,6 @@
 
             emailjs.send(serviceID, templateID, params)
             .then((response) => {
-                // Ẩn form và hiển thị lời cảm ơn
                 document.getElementById("contactForm").style.display = "none";
                 document.getElementById("thankYouMessage").style.display = "block";
             })
@@ -133,12 +153,8 @@
                 alert("Có lỗi xảy ra khi gửi thư. Vui lòng thử lại sau!");
             });
         }
-    </script>
 
-    <!-- Tạo các ngôi sao lấp lánh ngẫu nhiên -->
-    <script>
         const numStars = 100;
-
         for (let i = 0; i < numStars; i++) {
             const star = document.createElement("div");
             star.className = "star";
